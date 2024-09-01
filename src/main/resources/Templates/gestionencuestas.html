@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Encuestas</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <style>
+        
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .container {
+            display: flex;
+            width: 80%;
+            max-width: 1000px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .left-panel {
+            width: 30%;
+            background-color: #f8f8f8;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .right-panel {
+            width: 70%;
+            padding: 20px;
+        }
+        button {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input {
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        #guardarCambios {
+            align-self: flex-start;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Encuestas</div>
+            <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="#">Acerca de</a></li>
+                <li><a href="login.html">Acceder</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1>GESTIÓN DE ENCUESTAS</h1>
+    <div class="container">
+        <div class="left-panel">
+            <button onclick="mostrarFormulario('crear')">Crear Encuesta</button>
+            <button onclick="mostrarFormulario('actualizar')">Actualizar Encuesta</button>
+            <button onclick="mostrarFormulario('eliminar')">Eliminar Encuesta</button>
+        </div>
+        <div class="right-panel" id="rightPanel">
+            <!-- El formulario se generará aquí dinámicamente -->
+        </div>
+    </div>
+
+    <script>
+        function mostrarFormulario(tipo) {
+            const rightPanel = document.getElementById('rightPanel');
+            let formulario = '';
+
+            if (tipo === 'crear' || tipo === 'actualizar') {
+                formulario = `
+                    <form onsubmit="event.preventDefault(); guardarCambios('${tipo}')">
+                        <input type="text" id="nombreEncuesta" placeholder="Nombre de la encuesta" required>
+                        <input type="text" id="descripcionEncuesta" placeholder="Descripción de la encuesta" required>
+                        <button type="submit" id="guardarCambios">GUARDAR CAMBIOS</button>
+                    </form>
+                `;
+            } else if (tipo === 'eliminar') {
+                formulario = `
+                    <form onsubmit="event.preventDefault(); guardarCambios('${tipo}')">
+                        <input type="text" id="nombreEncuesta" placeholder="Nombre de la encuesta a eliminar" required>
+                        <button type="submit" id="guardarCambios">GUARDAR CAMBIOS</button>
+                    </form>
+                `;
+            }
+
+            rightPanel.innerHTML = formulario;
+        }
+
+        function guardarCambios(tipo) {
+            const nombreEncuesta = document.getElementById('nombreEncuesta').value;
+            let mensaje = '';
+
+            switch(tipo) {
+                case 'crear':
+                    const descripcionEncuesta = document.getElementById('descripcionEncuesta').value;
+                    mensaje = `Encuesta "${nombreEncuesta}" creada con descripción: ${descripcionEncuesta}`;
+                    break;
+                case 'actualizar':
+                    const nuevaDescripcion = document.getElementById('descripcionEncuesta').value;
+                    mensaje = `Encuesta "${nombreEncuesta}" actualizada con nueva descripción: ${nuevaDescripcion}`;
+                    break;
+                case 'eliminar':
+                    mensaje = `Encuesta "${nombreEncuesta}" eliminada`;
+                    break;
+            }
+
+            alert(mensaje);
+            // Aquí se implementaría la lógica real para interactuar con una base de datos
+        }
+    </script>
+</body>
+</html>
