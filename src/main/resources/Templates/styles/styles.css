@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
 
+/*********************** PAGINA INICIO  ******************************/
 
 * {
     margin: 0;
@@ -56,6 +57,18 @@ main {
 .content {
     flex: 1;
 }
+
+.bg-content {
+    background-image: url('https://d32ijn7u0aqfv4.cloudfront.net/wp/wp-content/uploads/raw/SOIN20020_1560x880.jpg');
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+}
+
+
 h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
@@ -67,7 +80,7 @@ p {
 }
 .cta-button {
     display: inline-block;
-    background-color: #007bff;
+    background-color: #ff003c;
     color: white;
     padding: 0.75rem 1.5rem;
     text-decoration: none;
@@ -97,82 +110,7 @@ p {
     cursor: pointer;
 }
 
-
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-}
-
-.container {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
-    padding: 20px;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    border-radius: 5px;
-    margin-top: 20px;
-}
-
-h1 {
-    color: #333;
-    text-align: center;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-input[type="text"], textarea, select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-button {
-    display: inline-block;
-    background: #333;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-top: 10px;
-}
-
-button:hover {
-    background: #555;
-}
-
-.capitulo, .pregunta {
-    background: #f9f9f9;
-    padding: 15px;
-    margin-top: 15px;
-    border-radius: 5px;
-}
-
-#guardarEncuesta {
-    display: block;
-    margin-left: auto;
-    margin-top: 20px;
-    background-color: #4CAF50;
-}
-
-#guardarEncuesta:hover {
-    background-color: #45a049;
-}
-
-
-/* *** INICIO DE ADMIN **** */
+/* ********************** INICIO DE ADMIN **** *******************/
 
 
 .containeradmin {
@@ -207,29 +145,67 @@ button:hover {
     cursor: pointer;
 }
 
+
+/******************** FIN PAGINA INICIO ADMIN  *********************/
+
+/* GESTION ENCUESTAS - CAPITULOS - PREGUNTAS ********/
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"], textarea, select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+
+/* #guardarEncuesta {
+    display: block;
+    margin-left: auto;
+    margin-top: 20px;
+    background-color: #4CAF50;
+}
+
+#guardarEncuesta:hover {
+    background-color: #45a049;
+} */
+
+
 button:hover {
-    background-color: #0056b3;
+    background-color: #18b300;
 }
 
 
 h1 {
     text-align: center;
-    color: #333;
+    color: #008585;
 }
 
-.container {
-    display: flex;
-    width: 80%;
-    max-width: 1000px;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    border-radius: 8px;
-    overflow: hidden;
-}
+
 
 .left-panel {
     width: 30%;
-    background-color: #f8f8f8;
+    background-color: #ffffff;
     padding: 20px;
     display: flex;
     flex-direction: column;
