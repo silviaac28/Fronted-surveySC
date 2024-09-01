@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Capítulos</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            flex: 1;
+            width: 80%;
+            max-width: 1000px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 20px auto;
+        }
+        .left-panel {
+            width: 30%;
+            background-color: #f8f8f8;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .right-panel {
+            width: 70%;
+            padding: 20px;
+        }
+        button {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input {
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Encuestas</div>
+            <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="#">Acerca de</a></li>
+                <li><a href="login.html">Acceder</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <h1>GESTIÓN DE PREGUNTAS</h1>
+    <div class="container">
+        <div class="left-panel">
+            <button onclick="showForm('crear')">Crear Pregunta</button>
+            <button onclick="showForm('actualizar')">Actualizar Pregunta</button>
+            <button onclick="showForm('eliminar')">Eliminar Pregunta</button>
+        </div>
+        <div class="right-panel" id="formContainer"></div>
+    </div>
+
+    <script src="js/gestionpreguntas.js"></script>
+</body>
+</html>
