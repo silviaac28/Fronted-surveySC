@@ -5,8 +5,8 @@ function showForm(action) {
     if (action === 'crear' || action === 'actualizar') {
         formHTML = `
             <form onsubmit="return false;">
-                <input type="text" placeholder="Nombre de la encuesta" required>
-                <input type="number" placeholder="Número del capítulo" required>
+                <input type="text" placeholder="ID de la encuesta" required>
+                <input type="text" placeholder="Número del capítulo" required>
                 <input type="text" placeholder="Título del capítulo" required>
                 <button onclick="guardarCambios('${action}')">GUARDAR CAMBIOS</button>
             </form>
@@ -14,8 +14,8 @@ function showForm(action) {
     } else if (action === 'eliminar') {
         formHTML = `
             <form onsubmit="return false;">
-                <input type="text" placeholder="Nombre de la encuesta" required>
-                <input type="number" placeholder="Número del capítulo" required>
+                <input type="text" placeholder="ID de la encuesta" required>
+                <input type="text" placeholder="Número del capítulo" required>
                 <button onclick="guardarCambios('${action}')">GUARDAR CAMBIOS</button>
             </form>
         `;

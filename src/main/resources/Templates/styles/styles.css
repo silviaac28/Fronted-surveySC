@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
+
 * {
     margin: 0;
     padding: 0;
@@ -21,9 +24,10 @@ nav {
     margin: 0 auto;
 }
 .logo {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: bold;
     color: #007bff;
+    font-family: "Satisfy", cursive;
 }
 .nav-links {
     list-style-type: none;
@@ -186,7 +190,8 @@ button:hover {
 }
 
 #img-admin {
-    max-width: 100%;
+    margin-top: 2rem;
+    max-width: 70%;
     height: auto;
     margin-bottom: 1rem;
 }
@@ -194,6 +199,7 @@ button:hover {
 #b-admin {
     padding: 0.5rem 1rem;
     font-size: 1rem;
+    margin-right: 3rem;
     background-color: #007bff;
     color: white;
     border: none;
