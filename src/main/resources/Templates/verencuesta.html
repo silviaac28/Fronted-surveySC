@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizador de Encuestas</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-image: url('https://www.esic.edu/sites/default/files/2022-05/analisis-de-datos.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+       
+        .container {
+            background-color: rgba(255, 255, 255, 0.63);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 50px auto;
+            width: 70%;
+        }
+        h1 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        button {
+            background-color: #1a867e;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .back-button {
+            background-color: #68168eaf;
+        }
+        .question-card {
+            background-color: #f1f1f17b;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .options {
+            margin-top: 10px;
+        }
+        .option {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">SC Surveys</div>
+            <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="#">Acerca de</a></li>
+                <li><a href="login.html">Acceder</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <div id="back-button-container" style="display: none;">
+            <button class="back-button" onclick="goBack()">← Volver</button>
+        </div>
+        <h1 id="main-title">ENCUESTAS DISPONIBLES</h1>
+        <div id="content"></div>
+    </div>
+
+    <script>
+        // Datos de ejemplo
+        const encuestas = [
+            { id: 1, nombre: "Encuesta de Satisfacción" },
+            { id: 2, nombre: "Encuesta de Clima Laboral" },
+            { id: 3, nombre: "Encuesta de Producto" }
+        ];
+
+        const capitulos = [
+            { id: 1, encuestaId: 1, numero: 1, titulo: "Atención al Cliente" },
+            { id: 2, encuestaId: 1, numero: 2, titulo: "Calidad del Producto" },
+            { id: 3, encuestaId: 2, numero: 1, titulo: "Ambiente Laboral" },
+            { id: 4, encuestaId: 2, numero: 2, titulo: "Comunicación Interna" }
+        ];
+
+        const preguntas = [
+            { id: 1, capituloId: 1, numero: 1, pregunta: "¿Cómo calificaría la atención recibida?", comentario: "Evalúe del 1 al 4", opciones: ["Mala", "Regular", "Buena", "Excelente"] },
+            { id: 2, capituloId: 1, numero: 2, pregunta: "¿El personal fue amable?", comentario: "Indique su nivel de acuerdo", opciones: ["Totalmente en desacuerdo", "En desacuerdo", "De acuerdo", "Totalmente de acuerdo"] },
+            { id: 3, capituloId: 2, numero: 1, pregunta: "¿El producto cumplió sus expectativas?", comentario: "Evalúe la calidad", opciones: ["No las cumplió", "Cumplió parcialmente", "Cumplió", "Superó las expectativas"] }
+        ];
+
+        function mostrarEncuestas() {
+            document.getElementById('main-title').innerText = 'ENCUESTAS DISPONIBLES';
+            document.getElementById('back-button-container').style.display = 'none';
+            let content = `
+                <table>
+                    <tr>
+                        <th>ID encuesta</th>
+                        <th>Nombre encuesta</th>
+                        <th>Acción</th>
+                    </tr>
+            `;
+            encuestas.forEach(encuesta => {
+                content += `
+                    <tr>
+                        <td>${encuesta.id}</td>
+                        <td>${encuesta.nombre}</td>
+                        <td><button onclick="mostrarCapitulos(${encuesta.id})"><i class="fas fa-eye"></i> Visualizar</button></td>
+                    </tr>
+                `;
+            });
+            content += '</table>';
+            document.getElementById('content').innerHTML = content;
+        }
+
+        function mostrarCapitulos(encuestaId) {
+            document.getElementById('main-title').innerText = 'CAPÍTULOS DISPONIBLES';
+            document.getElementById('back-button-container').style.display = 'block';
+            let content = `
+                <table>
+                    <tr>
+                        <th>ID encuesta</th>
+                        <th>Número capítulo</th>
+                        <th>Título capítulo</th>
+                        <th>Acción</th>
+                    </tr>
+            `;
+            capitulos.filter(capitulo => capitulo.encuestaId === encuestaId).forEach(capitulo => {
+                content += `
+                    <tr>
+                        <td>${capitulo.encuestaId}</td>
+                        <td>${capitulo.numero}</td>
+                        <td>${capitulo.titulo}</td>
+                        <td><button onclick="mostrarPreguntas(${capitulo.id})">Visualizar</button></td>
+                    </tr>
+                `;
+            });
+            content += '</table>';
+            document.getElementById('content').innerHTML = content;
+        }
+
+        function mostrarPreguntas(capituloId) {
+            document.getElementById('main-title').innerText = 'PREGUNTAS';
+            document.getElementById('back-button-container').style.display = 'block';
+            let content = '';
+            preguntas.filter(pregunta => pregunta.capituloId === capituloId).forEach(pregunta => {
+                content += `
+                    <div class="question-card">
+                        <h3>${pregunta.numero}. ${pregunta.pregunta}</h3>
+                        <p><em>${pregunta.comentario}</em></p>
+                        <div class="options">
+                            ${pregunta.opciones.map((opcion, index) => `
+                                <div class="option">
+                                    <input type="radio" id="opcion${index}" name="pregunta${pregunta.id}" value="${opcion}">
+                                    <label for="opcion${index}">${opcion}</label>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('content').innerHTML = content;
+        }
+
+        function goBack() {
+            if (document.getElementById('main-title').innerText === 'PREGUNTAS') {
+                mostrarCapitulos(1); // Asumimos que volvemos a la primera encuesta
+            } else {
+                mostrarEncuestas();
+            }
+        }
+
+        // Iniciar mostrando las encuestas
+        mostrarEncuestas();
+    </script>
+</body>
+</html>

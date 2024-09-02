@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Capítulos</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">SC Surveys</div>
+            <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="#">Acerca de</a></li>
+                <li><a href="login.html">Acceder</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div id="titulo-gestion">
+        <h1>GESTIÓN DE PREGUNTAS</h1>
+    </div>
+    <div class="container">
+        <div class="left-panel">
+            <button onclick="showForm('crear')">Crear Pregunta</button>
+            <button onclick="showForm('actualizar')">Actualizar Pregunta</button>
+            <button onclick="showForm('eliminar')">Eliminar Pregunta</button>
+        </div>
+        <div class="right-panel" id="formContainer"></div>
+    </div>
+
+    <script src="js/gestionpreguntas.js"></script>
+</body>
+</html>
